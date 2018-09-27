@@ -59,12 +59,20 @@
 	transform: scale(0.8);
 }
 
-.hero-move81, .hero-move82, .hero-move83, .hero-move84, .hero-move85, .hero-move86, .hero-move87, .hero-move88, .eat-to-8 {
+.hero-move81, .hero-move82, .hero-move83, .hero-move84, .hero-move85, .hero-move86, .hero-move87, .hero-move88, .eat-to-8, .roll-to-8 {
 	background-position: -120px -40px;
 }
 
-.hero-move21, .hero-move22, .hero-move23, .hero-move24, .hero-move25, .hero-move26, .hero-move27, .hero-move28, .eat-to-2 {
+.hero-move21, .hero-move22, .hero-move23, .hero-move24, .hero-move25, .hero-move26, .hero-move27, .hero-move28, .eat-to-2, .roll-to-2 {
 	background-position: -160px -40px;
+}
+
+.roll-to-4 {
+	background-position: -280px 0;
+}
+
+.roll-to-6 {
+	background-position: -280px -80px;
 }
 
 .eat-to-4 {

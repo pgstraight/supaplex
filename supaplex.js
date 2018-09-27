@@ -230,6 +230,14 @@ function kbMoveRight() {
 	return keyRight && !keySpace && !keyUp && !keyDown && !keyLeft;
 }
 
+function kbMove(direction) {
+	if (direction == 8) return kbMoveUp();
+	if (direction == 2) return kbMoveDown();
+	if (direction == 4) return kbMoveLeft();
+	if (direction == 6) return kbMoveRight();
+	return false;
+}
+
 function kbEatUp() {
 	return keyUp && keySpace && !keyDown && !keyLeft && !keyRight;
 }

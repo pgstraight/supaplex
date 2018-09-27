@@ -2,12 +2,18 @@ function Bug() {
 	this.status = 0;
 	this.pos = 0;
 	this.time = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+	
 	this.setupDomElement = function($e) {
 		$e.addClass('bug');
 	}
 	
+	this.eatable = function() {
+		return true;
+	}
+	
 	this.idle = function() {
-		//this.domElement.empty().html(this.status+'-'+this.time);
+		this.idleEat();
+		//this.view(this.job);
 		if (status==0) {
 			this.time--;
 			if (this.time<1) {
@@ -23,7 +29,11 @@ function Bug() {
 				this.pos = 1;
 			}
 			this.domElement.addClass('bug'+this.pos);
-
+			
+			if (this.job != 0) {
+				heroObject.huyak();
+			}
+			
 			this.time--;
 			if (this.time<2) {
 				this.status = 0;

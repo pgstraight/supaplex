@@ -76,6 +76,22 @@ function Hero() {
 			this.handleMove(6);
 		}
 		
+		else if (this.job == 98) {
+			this.handleRoll(8);
+		}
+		
+		else if (this.job == 92) {
+			this.handleRoll(2);
+		}
+		
+		else if (this.job == 94) {
+			this.handleRoll(4);
+		}
+		
+		else if (this.job == 96) {
+			this.handleRoll(6);
+		}
+		
 		else if (this.job == 78) {
 			this.handleNippel(8);
 		}
@@ -90,6 +106,31 @@ function Hero() {
 		
 		else if (this.job == 76) {
 			this.handleNippel(6);
+		}
+		
+		else if (this.job == 84 || this.job == 86 || this.job == 88 || this.job == 82) {
+			var direction = this.job - 80;
+			this.domClass('roll-to-'+direction);
+			this.move++;
+			if (this.move == 8) {
+				var direction = this.job - 80;
+				var o = this.near(direction);
+				if (o && o.rollable(direction) && kbMove(direction)) {
+					var d = this.dd(direction);
+					this.move = 0;
+					this.job = 90 + direction;
+					this.xx = this.x + d.x;
+					this.yy = this.y + d.y;
+					this.dx = 0;
+					this.dy = 0;
+					o.rollTo(direction);
+				}
+			}
+			else if (this.move > 8) {
+				this.job = 0;
+				this.move = 0;
+				this.domClass('hero');
+			}
 		}
 		
 		else if (this.job == 5) {
@@ -114,6 +155,13 @@ function Hero() {
 				this.moveTo(direction);
 			} else if (map.isNippel(this.x, this.y, direction)) {
 				this.nippelTo(direction);
+			} else if (o.rollable(direction)) {
+				if (this.job == 0) {
+					this.job = 80 + direction;
+					this.move = 0;
+				} else if (this.job == 80 + direction) {
+					var d = this.dd(direction);
+				}
 			}
 		}
 	}
@@ -124,13 +172,13 @@ function Hero() {
 		}
 		else {
 			var o = this.near(direction);
-			if (o && o.eatable()) {
+			if (o && o.eatable()) {o.view(direction);
 				this.domClass('eat-to-'+direction);
 				this.job = 5;
 				this.move = 0;
 				o.job = 50+direction;
 				o.move = 0;
-				map.set(o.x, o.y, false);
+				//map.set(o.x, o.y, false);
 			}
 		}
 	}
@@ -178,7 +226,22 @@ function Hero() {
 			this.whatToDo();
 		}
 		this.posElement();
-	}                                         
+	}
+	
+	this.handleRoll = function(direction) {
+		var d = this.dd(direction);
+		this.move ++;
+		this.dx = this.move*d.x*5;
+		this.dy = this.move*d.y*5;
+		if (this.move >= 8) {
+			this.job = 80 + direction;
+			this.dx = 0;
+			this.dy = 0;
+			this.move = 0;
+			this.newCoord();
+		}
+		this.posElement();
+	}
 	
 	this.handleNippel = function(direction) {
 		var d = this.dd(direction);

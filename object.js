@@ -224,6 +224,34 @@ SupaplexObject.prototype.newCoord = function() {
 	this.posElement();
 }
 
+SupaplexObject.prototype.addRollClass = function() {
+}
+
+SupaplexObject.prototype.removeRollClass = function() {
+}
+
+SupaplexObject.prototype.idleRoll = function() {
+	if (this.job == 94 || this.job == 96 || this.job == 98 || this.job == 92) {
+		var direction = this.job - 90;
+		var d = this.dd(direction);
+		this.removeRollClass();
+		this.move++;
+		if (this.move > 7){
+			this.x = this.xx;
+			this.y = this.yy;
+			this.move = 0;
+			this.job = 0;
+			this.dx = 0;
+			this.dy = 0;
+			map.set(this.x, this.y, this);
+		} else {
+			this.addRollClass();
+			this.dx += d.x*5;
+			this.dy += d.y*5;
+		}
+		this.posElement();
+	}
+}
 
 SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 	if (this.job == 0) {
@@ -231,7 +259,7 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 			this.job = 2;
 			this.move = 0;
 			this.xx = this.x;
-			this.yy = this.y+1;
+			this.yy = this.y + 1;
 			map.set(this.xx, this.yy, this);
 		}
 		else {
@@ -335,16 +363,29 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 SupaplexObject.prototype.huyak = function() {
 }
 
-
 SupaplexObject.prototype.isNippel = function() {
+	return false;
+}
+
+SupaplexObject.prototype.rollable = function() {
 	return false;
 }
 
 SupaplexObject.prototype.afterEat = function() {
 }
 
+SupaplexObject.prototype.rollTo = function(direction) {
+	var d = this.dd(direction);
+	this.job = 90 + direction;
+	this.move = 0;
+	this.xx = this.x + d.x;
+	this.yy = this.y + d.y;
+	map.set(this.xx, this.yy, this);
+}
+
 
 SupaplexObject.prototype.idleEat = function() {
+	//this.view(this.job);
 	if (this.job == 52 || this.job == 58 || this.job == 54 || this.job == 56) {
 		this.domElement.removeClass('eat'+this.move);
 		this.move++;
@@ -355,11 +396,12 @@ SupaplexObject.prototype.idleEat = function() {
 		//else if (this.job == 58 || this.job == 52) {
 		//	this.domElement.height(40-this.move*5);
 		//}
-		if (this.move >=4 ) {
+		if (this.move >= 4) {
 			this.afterEat();
 			this.move = 0;
 			this.job = 0;
 			this.domElement.remove();
+			map.set(this.x, this.y, false);
 			objects[this.index] = false;
 		}
 	}
