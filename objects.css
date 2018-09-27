@@ -1,0 +1,458 @@
+.object {
+	position: absolute;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-image: url(graphic.png);
+	background-repeat: no-repeat;
+	color: white;
+	font-size: 10px;
+	text-align: center;
+}
+
+.uuu {
+	background-image: none;
+	background-color: #600;
+}
+
+.hero {
+	background-position: 0 -40px;
+}
+
+.hero-nippel1 {
+	background-position: 0 -40px;
+	transform: scale(0.8);
+}
+
+.hero-nippel2 {
+	background-position: 0 -40px;
+	transform: scale(0.6);
+}
+
+.hero-nippel3 {
+	background-position: 0 -40px;
+	transform: scale(0.4);
+}
+
+.hero-nippel4 {
+	background-position: 0 -40px;
+	transform: scale(0.2);
+}
+
+.hero-nippel5 {
+	background-position: 0 -40px;
+	transform: scale(0.2);
+}
+
+.hero-nippel6 {
+	background-position: 0 -40px;
+	transform: scale(0.4);
+}
+
+.hero-nippel7 {
+	background-position: 0 -40px;
+	transform: scale(0.6);
+}
+
+.hero-nippel8 {
+	background-position: 0 -40px;
+	transform: scale(0.8);
+}
+
+.hero-move81, .hero-move82, .hero-move83, .hero-move84, .hero-move85, .hero-move86, .hero-move87, .hero-move88, .eat-to-8 {
+	background-position: -120px -40px;
+}
+
+.hero-move21, .hero-move22, .hero-move23, .hero-move24, .hero-move25, .hero-move26, .hero-move27, .hero-move28, .eat-to-2 {
+	background-position: -160px -40px;
+}
+
+.eat-to-4 {
+	background-position: -40px -40px;
+}
+
+.eat-to-6 {
+	background-position: -80px -40px;
+}
+
+.hardblock6 {
+	background-position: -40px 0;
+}
+
+.hardblock28 {
+	background-position: -240px -200px;
+}
+
+.hardblock29 {
+	background-position: -320px -240px;
+}
+
+.hardblock30 {
+	background-position: -120px -200px;
+}
+
+.hardblock31 {
+	background-position: -160px -200px;
+}
+
+.hardblock32 {
+	background-position: -200px -200px;
+}
+
+.hardblock33 {
+	background-position: -40px -120px;
+}
+
+.hardblock34 {
+	background-position: -280px -200px;
+}
+
+.hardblock35 {
+	background-position: -320px -200px;
+}
+
+.hardblock36 {
+	background-position: -240px -240px;
+}
+
+.hardblock37 {
+	background-position: -280px -240px;
+}
+
+.grass {
+	background-position: 0 0;
+}
+
+.eat1 {
+	transform: scale(0.8);
+}
+
+.eat2 {
+	transform: scale(0.6);
+}
+
+.eat3 {
+	transform: scale(0.4);
+}
+
+.eat4 {
+	transform: scale(0.2);
+}
+
+.stone {
+	transform-origin: 20px 20px;
+	background-position: 0 -80px;
+}
+
+	.stone-rotate-m1 {
+		transform: rotate(-25grad);
+	}
+
+	.stone-rotate-m2 {
+		transform: rotate(-25grad);
+	}
+
+	.stone-rotate-m3 {
+		transform: rotate(-50grad);
+	}
+
+	.stone-rotate-m4 {
+		transform: rotate(-50grad);
+	}
+
+	.stone-rotate-m5 {
+		transform: rotate(-75grad);
+	}
+
+	.stone-rotate-m6 {
+		transform: rotate(-75grad);
+	}
+
+	.stone-rotate-m7 {
+		transform: rotate(-100grad);
+	}
+
+	.stone-rotate-m8 {
+		transform: rotate(-100grad);
+	}
+
+	.stone-rotate-m9 {
+		transform: rotate(-125grad);
+	}
+
+	.stone-rotate-m10 {
+		transform: rotate(-125grad);
+	}
+
+	.stone-rotate-m11 {
+		transform: rotate(-150grad);
+	}
+
+	.stone-rotate-m12 {
+		transform: rotate(-150grad);
+	}
+
+	.stone-rotate-m13 {
+		transform: rotate(-175grad);
+	}
+
+	.stone-rotate-m14 {
+		transform: rotate(-175grad);
+	}
+
+	.stone-rotate-m15 {
+		transform: rotate(-200grad);
+	}
+
+	.stone-rotate-m16 {
+		transform: rotate(-200grad);
+	}
+
+	.stone-rotate-1 {
+		transform: rotate(25grad);
+	}
+
+	.stone-rotate-2 {
+		transform: rotate(25grad);
+	}
+
+	.stone-rotate-3 {
+		transform: rotate(50grad);
+	}
+
+	.stone-rotate-4 {
+		transform: rotate(50grad);
+	}
+
+	.stone-rotate-5 {
+		transform: rotate(75grad);
+	}
+
+	.stone-rotate-6 {
+		transform: rotate(75grad);
+	}
+
+	.stone-rotate-7 {
+		transform: rotate(100grad);
+	}
+
+	.stone-rotate-8 {
+		transform: rotate(100grad);
+	}
+
+	.stone-rotate-9 {
+		transform: rotate(125grad);
+	}
+
+	.stone-rotate-10 {
+		transform: rotate(125grad);
+	}
+
+	.stone-rotate-11 {
+		transform: rotate(150grad);
+	}
+
+	.stone-rotate-12 {
+		transform: rotate(150grad);
+	}
+
+	.stone-rotate-13 {
+		transform: rotate(175grad);
+	}
+
+	.stone-rotate-14 {
+		transform: rotate(175grad);
+	}
+
+	.stone-rotate-15 {
+		transform: rotate(200grad);
+	}
+
+	.stone-rotate-16 {
+		transform: rotate(200grad);
+	}
+
+.food {
+	background-position: 0 -120px;
+}
+
+.chip5 {
+	background-position: 0 -160px;
+}
+
+.chip26 {
+	background-position: -40px -160px;
+}
+
+.chip27 {
+	background-position: -80px -160px;
+}
+
+.chip38 {
+	background-position: -120px -120px;
+}
+
+.chip39 {
+	background-position: -120px -160px;
+}
+
+.snack1 {
+	background-position: 0 -200px;
+}
+
+.snack2 {
+	background-position: -40px -200px;
+}
+
+.snack3 {
+	background-position: -80px -200px;
+}
+
+.finish {
+	background-position: -80px -120px;
+}
+
+.drop-bomb {
+	background-position: -120px -240px;
+}
+
+.radio-bomb {
+	background-position: -160px -240px;
+}
+
+.hand-bomb {
+	background-position: -200px -240px;
+}
+
+.radio-pult {
+	background-position: -280px -160px;
+}
+
+.bug {
+	background-position: 0 0;
+}
+
+.bug1 {
+	background-position: -40px -80px;
+}
+
+.bug2 {
+	background-position: -80px -80px;
+}
+
+.bug3 {
+	background-position: -120px -80px;
+}
+
+.bnya1 {
+	background-position: -320px -160px;
+}
+
+.bnya2 {
+	background-position: -320px -120px;
+}
+
+.bnya3 {
+	background-position: -320px -80px;
+}
+
+.bnya4 {
+	background-position: -320px -40px;
+}
+
+.bnya5 {
+	background-position: -320px 0;
+}
+
+.nippel9 {
+	background-position: -200px -160px;
+}
+
+.nippel10 {
+	background-position: -160px -120px;
+}
+
+.nippel11 {
+	background-position: -200px -120px;
+}
+
+.nippel12 {
+	background-position: -160px -160px;
+}
+
+.nippel21 {
+	background-position: -240px -120px;
+}
+
+.nippel22 {
+	background-position: -240px -160px;
+}
+
+.nippel23 {
+	background-position: -280px -120px;
+}
+
+
+.hero-move41 {
+	background-position: -160px 0;
+}
+
+.hero-move42 {
+	background-position: -160px 0;
+}
+
+.hero-move43 {
+	background-position: -200px 0;
+}
+
+.hero-move44 {
+	background-position: -200px 0;
+}
+
+.hero-move45 {
+	background-position: -240px 0;
+}
+
+.hero-move46 {
+	background-position: -240px 0;
+}
+
+.hero-move47 {
+	background-position: -200px 0;
+}
+
+.hero-move48 {
+	background-position: -200px 0;
+}
+
+.hero-move61 {
+	background-position: -160px -80px;
+}
+
+.hero-move62 {
+	background-position: -160px -80px;
+}
+
+.hero-move63 {
+	background-position: -200px -80px;
+}
+
+.hero-move64 {
+	background-position: -200px -80px;
+}
+
+.hero-move65 {
+	background-position: -240px -80px;
+}
+
+.hero-move66 {
+	background-position: -240px -80px;
+}
+
+.hero-move67 {
+	background-position: -200px -80px;
+}
+
+.hero-move68 {
+	background-position: -200px -80px;
+}

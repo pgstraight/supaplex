@@ -1,0 +1,39 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: arial;
+}
+
+header {
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 800px;
+	background-color: #00abe4;
+}
+
+.map {
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	height: 600px;
+	max-width: 800px;
+	background-color: black;
+	overflow: hidden;
+}
+
+.title {
+	padding: 10px 20px;
+	color: white;
+	font-size: 30px;
+}
+
+.target {
+	position: absolute;
+	top: 14px;
+	right: 20px;
+	border: 1px solid black;
+	border-radius: 10px;
+	background-color: yellow;
+	padding: 3px 20px;
+}
