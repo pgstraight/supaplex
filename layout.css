@@ -71,3 +71,8 @@ header {
 .menu .levels a:hover {
 	background-color: #eee;
 }
+
+.menu .levels a.current {
+	font-weight: bold;
+	color: #f00;
+}

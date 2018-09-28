@@ -107,6 +107,14 @@ SupaplexObject.prototype.isEmpty2 = function(direction) {
 	return map.empty2(this.x + d.x, this.y + d.y);
 }
 
+SupaplexObject.prototype.isEmptyOrHero = function(direction) {
+	var d = this.dd(direction);
+	var o = map.get(this.x + d.x, this.y + d.y);
+	if (!o) return true;
+	if (o.id == 3 && o.job != direction) return true;
+	return false;
+}
+
 SupaplexObject.prototype.idleAutoMovement = function() {
 	if (this.move == -1) {
 		//this.view(this.direction+' '+this.move);
@@ -138,14 +146,14 @@ SupaplexObject.prototype.idleAutoMovement = function() {
 }
 
 SupaplexObject.prototype.findDirection = function() {
-	var e1 = this.isEmpty(1);
-	var e2 = this.isEmpty(2);
-	var e3 = this.isEmpty(3);
-	var e4 = this.isEmpty(4);
-	var e6 = this.isEmpty(6);
-	var e7 = this.isEmpty(7);
-	var e8 = this.isEmpty(8);
-	var e9 = this.isEmpty(9);
+	var e1 = this.isEmptyOrHero(1);
+	var e2 = this.isEmptyOrHero(2);
+	var e3 = this.isEmptyOrHero(3);
+	var e4 = this.isEmptyOrHero(4);
+	var e6 = this.isEmptyOrHero(6);
+	var e7 = this.isEmptyOrHero(7);
+	var e8 = this.isEmptyOrHero(8);
+	var e9 = this.isEmptyOrHero(9);
 	
 	if (!e2 && !e4 && !e6 && !e8) {
 		this.direction = 0;
@@ -215,6 +223,17 @@ SupaplexObject.prototype.findDirection = function() {
 			else if (e4) this.direction = 4;
 		}
 	}
+	
+	var o = this.near(this.direction);
+	if (o.id == 3) {
+		this.explode(this.x, this.y);
+	}
+}
+
+SupaplexObject.prototype.superIdle = function() {
+	//this.view(this.x+':'+this.xx);
+	var o = map.get(heroObject.x, heroObject.y);
+	if (o) this.view(o.id); else this.view('?');
 }
 
 SupaplexObject.prototype.newCoord = function() {
@@ -270,14 +289,14 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.job);
 					this.job = 5;
 					this.move = 0;
 				} else if (this.isSpheric() && o.isSpheric()) {
-					if (this.isEmpty(1) && this.isEmpty2(4)) {
+					if (this.isEmpty(1) && this.isEmpty(4)) {
 						this.job = 1;
 						this.move = 0;
 						this.xx = this.x-1;
 						this.yy = this.y+1;
 						map.set(this.xx, this.yy, this);
 					}
-					else if (this.isEmpty(3) && this.isEmpty2(6)) {
+					else if (this.isEmpty(3) && this.isEmpty(6)) {
 						this.job = 3;
 						this.move = 0;
 						this.xx = this.x+1;
@@ -304,7 +323,7 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.job);
 			o = this.near(2);
 			if (o) {
 				if (o.explodable()) o.explode(this.x, this.y+1);
-				else if (this.explodable()) this.explode(this.x, this.y+1);
+				else if (this.explodable()) this.explode(this.x, this.y);
 			}
 		}
 	}
@@ -403,7 +422,10 @@ SupaplexObject.prototype.press = function() {
 
 SupaplexObject.prototype.remove = function() {
 	this.domElement.remove();
-	map.set(this.x, this.y, false);
+	var o = map.get(this.x, this.y);
+	if (o && o.index == this.index) {
+		map.set(this.x, this.y, false);
+	}
 	objects[this.index] = false;
 }
 
@@ -518,22 +540,18 @@ SupaplexObject.prototype.fillFood = function() {
 SupaplexObject.prototype.idleEat = function() {
 	//this.view(this.job);
 	if (this.job == 52 || this.job == 58 || this.job == 54 || this.job == 56) {
-		this.domElement.removeClass('eat'+this.move);
-		this.move++;
-		this.domElement.addClass('eat'+this.move);
-		//if (this.job == 54 || this.job == 56) {
-		//	this.domElement.width(40-this.move*5);
-		//}
-		//else if (this.job == 58 || this.job == 52) {
-		//	this.domElement.height(40-this.move*5);
-		//}
-		if (this.move >= 4) {
+		this.domElement.css('border', '1px solid red');
+		if (this.move < 4) {
+			this.domElement.removeClass('eat'+this.move);
+			this.move++;
+			this.domElement.addClass('eat'+this.move);
+		}
+		else if (this.move < 8) {
+			this.move++;
+		}
+		else {
 			this.afterEat();
-			this.move = 0;
-			this.job = 0;
-			this.domElement.remove();
-			map.set(this.x, this.y, false);
-			objects[this.index] = false;
+			this.remove();
 		}
 	}
 }

@@ -10,6 +10,10 @@ function Snack() {
 		return true;
 	}
 	
+	this.press = function() {
+		this.explode(this.x, this.y);
+	}
+	
 	this.idle = function() {
 		//this.view(this.job);
 		if (this.job == 98 || this.job == 99) {

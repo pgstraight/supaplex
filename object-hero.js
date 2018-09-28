@@ -15,11 +15,8 @@ function Hero() {
 		this.idleExplode();
 	}
 	
-	this.afterExplode = function() {
-		this.fillFood();
-	}
-	
 	this.idleHero = function() {
+		//this.view(this.x+':'+this.xx);
 		if (this.job == 98 || this.job == 99) return;
 		var mx = this.x*40+20+this.dx-mapElement.width()/2;
 		var my = this.y*40+20+this.dy-mapElement.height()/2;
@@ -160,9 +157,13 @@ function Hero() {
 		else {
 			var o = this.near(direction);
 			if (o && o.eatable()) {
-				o.job = 50+direction;
-				o.move = 0;
-				this.moveTo(direction);
+				if (o.job > 0) {
+					this.explode(this.x, this.y);
+				} else {
+					o.job = 50+direction;
+					o.move = 0;
+					this.moveTo(direction);
+				}
 			} else if (map.isNippel(this.x, this.y, direction)) {
 				this.nippelTo(direction);
 			} else if (o.rollable(direction)) {
@@ -184,13 +185,16 @@ function Hero() {
 		}
 		else {
 			var o = this.near(direction);
-			if (o && o.eatable()) {o.view(direction);
-				this.domClass('eat-to-'+direction);
-				this.job = 5;
-				this.move = 0;
-				o.job = 50+direction;
-				o.move = 0;
-				//map.set(o.x, o.y, false);
+			if (o && o.eatable()) {
+				if (o.job > 0) {
+					this.explode(this.x, this.y);
+				} else {
+					this.domClass('eat-to-'+direction);
+					this.job = 5;
+					this.move = 0;
+					o.job = 50+direction;
+					o.move = 0;
+				}
 			}
 		}
 	}
@@ -224,6 +228,7 @@ function Hero() {
 	}
 	
 	this.handleMove = function(direction) {
+		//this.view(this.x+':'+this.xx);
 		var d = this.dd(direction);
 		this.move ++;
 		this.domClass('hero-move'+direction+this.move)
@@ -235,6 +240,8 @@ function Hero() {
 			this.dy = 0;
 			this.move = 0;
 			this.newCoord();
+			map.setForce(this.x, this.y, this);
+			//$('.debug1').append(this.x+':'+this.y+'/'+map.get(this.x, this.y).id+' ');
 			this.whatToDo();
 		}
 		this.posElement();

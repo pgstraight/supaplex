@@ -4,12 +4,25 @@ function DropBomb() {
 	}
 	
 	this.idle = function() {
-		this.idleFall();
 		this.idleExplode();
+		if (this.job <98) {
+			this.idleFall();
+			this.idleRoll();
+		}
 	}
 	
 	this.explodable = function() {
 		return true;
+	}
+	
+	this.rollable = function(direction) {
+		if (this.job != 0) {
+			return false;
+		}
+		if (direction == 4 || direction == 6) {
+			return !this.near(direction);
+		}
+		return false;
 	}
 	
 }

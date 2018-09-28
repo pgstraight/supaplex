@@ -32,12 +32,14 @@ function LevelMap(src)
 
 LevelMap.prototype.idle = function() {
 	var o;
+	heroObject.superIdle();
 	heroObject.idleHero();
 	for(var y=23; y>=0; y--) {
 		for(var x=0; x<60; x++) {
 			o = this.data[y][x].object;
 			if (typeof(o) == 'object') {
 				if (o.x == x && o.y == y) {
+					o.superIdle();
 					o.idle();
 				}
 			}
@@ -53,6 +55,12 @@ LevelMap.prototype.get = function(x, y) {
 
 LevelMap.prototype.set = function(x, y, object) {
 	if (object && !this.empty(x, y)) return;
+	this.data[y][x].object = object;
+};
+
+LevelMap.prototype.setForce = function(x, y, object) {
+	var o = this.get(x, y);
+	if (o && o.id != 3) o.remove();
 	this.data[y][x].object = object;
 };
 
@@ -118,6 +126,7 @@ function loadLevel(number)
 	var $menu = $('.menu .levels');
 	for(var i = 0; i < levels.length; i++) {
 		var $a = $('<a>').attr('href', 'level.html?'+(i+1)).text(levels[i].title);
+		if (number == i+1) $a.addClass('current');
 		$menu.append($a);
 	}
 }
