@@ -31,7 +31,7 @@ function Bug() {
 			this.domElement.addClass('bug'+this.pos);
 			
 			if (this.job != 0) {
-				heroObject.huyak();
+				heroObject.explode(heroObject.x, heroObject.y);
 			}
 			
 			this.time--;

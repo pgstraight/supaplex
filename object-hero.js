@@ -7,10 +7,20 @@ function Hero() {
 		$e.addClass('hero');
 	}
 	
+	this.explodable = function() {
+		return true;
+	}
+	
 	this.idle = function() {
+		this.idleExplode();
+	}
+	
+	this.afterExplode = function() {
+		this.fillFood();
 	}
 	
 	this.idleHero = function() {
+		if (this.job == 98 || this.job == 99) return;
 		var mx = this.x*40+20+this.dx-mapElement.width()/2;
 		var my = this.y*40+20+this.dy-mapElement.height()/2;
 		mapElement.scrollLeft(mx);
@@ -76,19 +86,19 @@ function Hero() {
 			this.handleMove(6);
 		}
 		
-		else if (this.job == 98) {
+		else if (this.job == 68) {
 			this.handleRoll(8);
 		}
 		
-		else if (this.job == 92) {
+		else if (this.job == 62) {
 			this.handleRoll(2);
 		}
 		
-		else if (this.job == 94) {
+		else if (this.job == 64) {
 			this.handleRoll(4);
 		}
 		
-		else if (this.job == 96) {
+		else if (this.job == 66) {
 			this.handleRoll(6);
 		}
 		
@@ -118,7 +128,7 @@ function Hero() {
 				if (o && o.rollable(direction) && kbMove(direction)) {
 					var d = this.dd(direction);
 					this.move = 0;
-					this.job = 90 + direction;
+					this.job = 60 + direction;
 					this.xx = this.x + d.x;
 					this.yy = this.y + d.y;
 					this.dx = 0;
@@ -162,6 +172,8 @@ function Hero() {
 				} else if (this.job == 80 + direction) {
 					var d = this.dd(direction);
 				}
+			} else {
+				o.press();
 			}
 		}
 	}
@@ -260,11 +272,6 @@ function Hero() {
 		}
 		this.posElement();
 	}
-	
-	this.huyak = function() {
-		this.view('boom');
-	}
-	
 }
 
 Hero.prototype = SupaplexObject.prototype;

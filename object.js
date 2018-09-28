@@ -11,7 +11,7 @@ SupaplexObject.prototype.init = function(id, x, y) {
 	this.x = x;
 	this.y = y;
 	this.xx = x;
-	this.xy = y;
+	this.yy = y;
 	this.dx = 0;
 	this.dy = 0;
 	this.job = 0;
@@ -63,6 +63,7 @@ SupaplexObject.prototype.eatable = function() {
 }
 
 SupaplexObject.prototype.idle = function() {
+	if (this.explodable()) this.idleExplode();
 }
 
 SupaplexObject.prototype.whereToGo = function() {
@@ -253,7 +254,7 @@ SupaplexObject.prototype.idleRoll = function() {
 	}
 }
 
-SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
+SupaplexObject.prototype.idleFall = function() {//this.view(this.job);
 	if (this.job == 0) {
 		if (this.isEmpty(2)) {
 			this.job = 2;
@@ -268,7 +269,7 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 				if (o.job != 0) {
 					this.job = 5;
 					this.move = 0;
-				} else if (o.isSpheric()) {
+				} else if (this.isSpheric() && o.isSpheric()) {
 					if (this.isEmpty(1) && this.isEmpty2(4)) {
 						this.job = 1;
 						this.move = 0;
@@ -301,7 +302,10 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 			this.newCoord();
 			this.move = 0;
 			o = this.near(2);
-			if (o) o.huyak();
+			if (o) {
+				if (o.explodable()) o.explode(this.x, this.y+1);
+				else if (this.explodable()) this.explode(this.x, this.y+1);
+			}
 		}
 	}
 	
@@ -325,6 +329,11 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 			this.newCoord();
 			this.job = 0;
 			this.move = 0;
+			o = this.near(2);
+			if (o) {
+				if (o.explodable()) o.explode(this.x, this.y+1);
+				else if (this.explodable()) this.explode(this.x, this.y+1);
+			}
 		}
 	}
 	
@@ -348,6 +357,10 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 			this.newCoord();
 			this.job = 0;
 			this.move = 0;
+			if (o) {
+				if (o.explodable()) o.explode(this.x, this.y+1);
+				else if (this.explodable()) this.explode(this.x, this.y+1);
+			}
 		}
 	}
 	
@@ -360,9 +373,6 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.x);
 	}
 }
 
-SupaplexObject.prototype.huyak = function() {
-}
-
 SupaplexObject.prototype.isNippel = function() {
 	return false;
 }
@@ -371,7 +381,30 @@ SupaplexObject.prototype.rollable = function() {
 	return false;
 }
 
+SupaplexObject.prototype.solid = function() {
+	return false;
+}
+
 SupaplexObject.prototype.afterEat = function() {
+}
+
+SupaplexObject.prototype.explodable = function() {
+	return false;
+}
+
+SupaplexObject.prototype.afterEat = function() {
+}
+
+SupaplexObject.prototype.radioExplode = function() {
+}
+
+SupaplexObject.prototype.press = function() {
+}
+
+SupaplexObject.prototype.remove = function() {
+	this.domElement.remove();
+	map.set(this.x, this.y, false);
+	objects[this.index] = false;
 }
 
 SupaplexObject.prototype.rollTo = function(direction) {
@@ -381,6 +414,104 @@ SupaplexObject.prototype.rollTo = function(direction) {
 	this.xx = this.x + d.x;
 	this.yy = this.y + d.y;
 	map.set(this.xx, this.yy, this);
+}
+
+SupaplexObject.prototype.waitExplode = function() {
+	if (this.explodable()) {
+		this.job = 98;
+		this.move = 0;
+	}
+}
+
+SupaplexObject.prototype.afterExplode = function() {
+	this.remove();
+}
+
+SupaplexObject.prototype.idleExplode = function() {
+	if (this.job == 99) {
+		if (this.move > 0) {
+			this.domElement.removeClass('explode-'+(this.move-1));
+		}
+		this.move++;
+		if (this.move > 5) {
+			this.job = 0;
+			this.move = 0;
+			this.afterExplode();
+		} else {
+			this.domElement.addClass('explode-'+this.move);
+			this.posElement();
+		}
+	}
+	
+	else if (this.job == 98) {
+		this.move++;
+		if (this.move > 7) {
+			this.explode(this.x, this.y);
+		}
+	}
+}
+
+SupaplexObject.prototype.explode = function(ex, ey) {
+	this.view(this.y);
+	this.job = 99;
+	this.move = 0;
+	this.dx = 0;
+	this.dy = 0;
+	map.set(this.x, this.y, false);
+	map.set(this.xx, this.yy, false);
+	map.set(ex, ey, this);
+	this.x = ex;
+	this.y = ey;
+	this.xx = ex;
+	this.yy = ey;
+	this.posElement();
+	
+	for (var y = -1; y<2; y++) {
+		for (var x = -1; x<2; x++) {
+			if (x != 0 || y != 0) {
+				o = map.get(this.x + x, this.y + y);
+				if (o && !o.solid()) {
+					this.view(o.solid());
+					if (o.explodable()) {
+						o.waitExplode();
+					} else {
+						o.remove();
+						o = new Explosion();
+						o.init(51, this.x + x, this.y + y);
+						map.set(this.x + x, this.y + y, o);
+						o.job = 99;
+					}
+				}
+				else if (!o) {
+					o = new Explosion();
+					o.init(51, this.x + x, this.y + y);
+					map.set(this.x + x, this.y + y, o);
+					o.job = 99;
+				}
+			}
+		}
+	}
+}
+
+SupaplexObject.prototype.fillFood = function() {
+	var xx = this.x;
+	var yy = this.y;
+	this.remove();
+	for (var y = yy-1; y<yy+2; y++) {
+		for (var x = xx-1; x<xx+2; x++) {
+			o = map.get(x, y);
+			if (o && o.id == 51) {
+				o.remove();
+				o = false;
+			}
+			if (!o) {
+				o = new Food();
+				o.init(4, x, y);
+				map.set(x, y, o);
+				o.posElement();
+			}
+		}
+	}
 }
 
 

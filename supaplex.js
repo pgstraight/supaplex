@@ -115,6 +115,11 @@ function loadLevel(number)
 	$('.title').html(levelTitle);
 	$('.target').html(targetEat + '/' + targetAll);
 	map = new LevelMap(src.map);
+	var $menu = $('.menu .levels');
+	for(var i = 0; i < levels.length; i++) {
+		var $a = $('<a>').attr('href', 'level.html?'+(i+1)).text(levels[i].title);
+		$menu.append($a);
+	}
 }
 
 function createObject(id, x, y)
