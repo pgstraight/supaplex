@@ -5,6 +5,7 @@ var map;
 var mapElement;
 var targetAll = 0;
 var targetEat = 0;
+var gravity = false;
 
 var keySpace = false;
 var keyLeft = false;
@@ -118,6 +119,7 @@ function loadLevel(number)
 {
 	var src = levels[number-1];
 	levelTitle = src.title;
+	gravity = src.gravity;
 	targetAll = src.target;
 	targetEat = 0;
 	$('.title').html(levelTitle);

@@ -40,18 +40,27 @@ function Hero() {
 	}
 	
 	this.whatToDo = function() {
-		if (this.job == 0) {
-			if (kbMoveUp()) {
-				this.jobTo(8);
-			}
-			else if (kbMoveDown()) {
-				this.jobTo(2);
-			}
-			else if (kbMoveLeft()) {
+		if (this.job == 888) {
+			if (kbMoveLeft()) {
 				this.jobTo(4);
 			}
 			else if (kbMoveRight()) {
 				this.jobTo(6);
+			}
+		}
+		else if (this.job == 0) {
+			//this.view(this.job);
+			if (kbMoveLeft()) {
+				this.jobTo(4);
+			}
+			else if (kbMoveRight()) {
+				this.jobTo(6);
+			}
+			else if (kbMoveUp()) {
+				this.jobTo(8);
+			}
+			else if (kbMoveDown()) {
+				this.jobTo(2);
 			}
 			else if (kbEatUp()) {
 				this.eatTo(8);
@@ -235,7 +244,11 @@ function Hero() {
 		this.dx = this.move*d.x*5;
 		this.dy = this.move*d.y*5;
 		if (this.move >= 8) {
-			this.job = 0;
+			if (this.job == 8 && gravity) {
+				this.job = 888;
+			} else {
+				this.job = 0;
+			}
 			this.dx = 0;
 			this.dy = 0;
 			this.move = 0;

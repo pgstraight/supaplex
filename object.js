@@ -232,8 +232,8 @@ SupaplexObject.prototype.findDirection = function() {
 
 SupaplexObject.prototype.superIdle = function() {
 	//this.view(this.x+':'+this.xx);
-	var o = map.get(heroObject.x, heroObject.y);
-	if (o) this.view(o.id); else this.view('?');
+	//var o = map.get(heroObject.x, heroObject.y);
+	//if (o) this.view(o.id); else this.view('?');
 }
 
 SupaplexObject.prototype.newCoord = function() {
