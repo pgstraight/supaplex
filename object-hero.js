@@ -40,6 +40,7 @@ function Hero() {
 	}
 	
 	this.whatToDo = function() {
+		//this.view(this.job);
 		if (this.job == 888) {
 			if (kbMoveLeft() && !this.isEmpty(1)) {
 				this.jobTo(4);
@@ -48,12 +49,13 @@ function Hero() {
 				this.jobTo(6);
 			}
 			else this.job = 0;
+			return;
 		}
-		else if (this.job == 222) {
+		if (this.job == 222) {
 			this.handleGravity();
+			return;
 		}
-		else if (this.job == 0) {
-			//this.view(this.job);
+		if (this.job == 0) {
 			if (gravity && this.isEmpty(2)) {
 				this.job = 222;
 				this.move = 0;
@@ -233,6 +235,7 @@ function Hero() {
 	}
 	
 	this.nippelTo = function(direction) {
+		this.near(direction).handle();
 		var d = this.dd(direction);
 		this.job = 70+direction;
 		this.xx = this.x + d.x*2;
@@ -253,12 +256,20 @@ function Hero() {
 		this.move++;
 		this.dy = this.move * 5;
 		if (this.move >= 8) {
-			this.job = 888;
+			this.job = 0;
 			this.dx = 0;
 			this.dy = 0;
 			this.move = 0;
 			this.newCoord();
 			map.setForce(this.x, this.y, this);
+			if (kbMoveLeft() && !this.isEmpty(1)) {
+				this.jobTo(4);
+			}
+			else if (kbMoveRight() && !this.isEmpty(3)) {
+				this.jobTo(6);
+			}
+			else this.job = 0;
+			this.whatToDo();
 		}
 		this.posElement();
 	}

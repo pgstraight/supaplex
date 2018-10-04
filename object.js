@@ -107,6 +107,11 @@ SupaplexObject.prototype.isEmpty2 = function(direction) {
 	return map.empty2(this.x + d.x, this.y + d.y);
 }
 
+SupaplexObject.prototype.isEmpty3 = function(direction) {
+	var d = this.dd(direction);
+	return map.empty3(this.x + d.x, this.y + d.y);
+}
+
 SupaplexObject.prototype.isEmptyOrHero = function(direction) {
 	var d = this.dd(direction);
 	var o = map.get(this.x + d.x, this.y + d.y);
@@ -251,12 +256,12 @@ SupaplexObject.prototype.removeRollClass = function() {
 }
 
 SupaplexObject.prototype.idleRoll = function() {
-	if (this.job == 94 || this.job == 96 || this.job == 98 || this.job == 92) {
-		var direction = this.job - 90;
+	if (this.job == 44 || this.job == 46 || this.job == 48 || this.job == 42) {
+		var direction = this.job - 40;
 		var d = this.dd(direction);
 		this.removeRollClass();
 		this.move++;
-		if (this.move > 7){
+		if (this.move > 7) {
 			this.x = this.xx;
 			this.y = this.yy;
 			this.move = 0;
@@ -285,18 +290,18 @@ SupaplexObject.prototype.idleFall = function() {//this.view(this.job);
 		else {
 			var o = map.get(this.x, this.y+1);
 			if (typeof(o)=='object') {
-				if (o.job != 0) {
+				if (o.job != 0 && o.job !=1 && o.job != 3) {
 					this.job = 5;
 					this.move = 0;
 				} else if (this.isSpheric() && o.isSpheric()) {
-					if (this.isEmpty(1) && this.isEmpty(4)) {
+					if (this.isEmpty(1) && this.isEmpty3(4)) {
 						this.job = 1;
 						this.move = 0;
 						this.xx = this.x-1;
 						this.yy = this.y+1;
 						map.set(this.xx, this.yy, this);
 					}
-					else if (this.isEmpty(3) && this.isEmpty(6)) {
+					else if (this.isEmpty(3) && this.isEmpty3(6)) {
 						this.job = 3;
 						this.move = 0;
 						this.xx = this.x+1;
@@ -431,7 +436,7 @@ SupaplexObject.prototype.remove = function() {
 
 SupaplexObject.prototype.rollTo = function(direction) {
 	var d = this.dd(direction);
-	this.job = 90 + direction;
+	this.job = 40 + direction;
 	this.move = 0;
 	this.xx = this.x + d.x;
 	this.yy = this.y + d.y;

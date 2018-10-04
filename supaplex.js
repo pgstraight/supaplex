@@ -15,6 +15,7 @@ var keyDown = false;
 
 var heroObject;
 
+var idleTime = 30;
 
 function LevelMap(src)
 {
@@ -77,6 +78,18 @@ LevelMap.prototype.empty2 = function(x, y) {
 	var o = this.data[y][x].object;
 	if (typeof(o) != 'object') return true;
 	if (o.x != x || o.y != y) {
+		if (o.move < 1 ) {
+			return false;
+		}
+	}
+	return false;
+};
+
+LevelMap.prototype.empty3 = function(x, y) {
+	if (x<0 || x>=60 || y<0 || y>=24) return false;
+	var o = this.data[y][x].object;
+	if (typeof(o) != 'object') return true;
+	if (o.x != x || o.y != y || o.xx != x || o.yy != y) {
 		if (o.move < 1 ) {
 			return false;
 		}
@@ -166,7 +179,7 @@ function createObject(id, x, y)
 		case 8:
 			o = new DropBomb();
 			break;
-		case 9: case 10: case 11: case 12: case 21: case 22: case 23:
+		case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 21: case 22: case 23:
 			o = new Nippel();
 			break;
 		case 17:

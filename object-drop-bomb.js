@@ -5,7 +5,7 @@ function DropBomb() {
 	
 	this.idle = function() {
 		this.idleExplode();
-		if (this.job <98) {
+		if (this.job < 98) {
 			this.idleFall();
 			this.idleRoll();
 		}

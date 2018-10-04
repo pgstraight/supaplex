@@ -44,7 +44,7 @@
 					//console.log(timestamp);
 					if (timestamp > time) {
 						map.idle();
-						time = timestamp + 30;
+						time = timestamp + idleTime;
 					}
 					requestAnimationFrame(gameloop);
 				})();

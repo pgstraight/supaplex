@@ -321,15 +321,15 @@
 }
 
 .drop-bomb {
-	background-position: -120px -240px;
-}
-
-.radio-bomb {
 	background-position: -160px -240px;
 }
 
-.hand-bomb {
+.radio-bomb {
 	background-position: -200px -240px;
+}
+
+.hand-bomb {
+	background-position: -120px -240px;
 }
 
 .radio-pult {
@@ -372,19 +372,19 @@
 	background-position: -320px 0;
 }
 
-.nippel9 {
+.nippel9, .nippel13 {
 	background-position: -200px -160px;
 }
 
-.nippel10 {
+.nippel10, .nippel14 {
 	background-position: -160px -120px;
 }
 
-.nippel11 {
+.nippel11, .nippel15 {
 	background-position: -200px -120px;
 }
 
-.nippel12 {
+.nippel12, .nippel16 {
 	background-position: -160px -160px;
 }
 
