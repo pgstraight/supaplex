@@ -112,7 +112,7 @@ function getLevelNumber()
 {
 	var p = window.location.search;
 	p = p.replace('?', '');
-	return p;
+	return p.match(/^\d+$/)? p : 1;
 }
 
 function loadLevel(number)

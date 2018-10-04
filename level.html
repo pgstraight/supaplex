@@ -48,23 +48,6 @@
 					}
 					requestAnimationFrame(gameloop);
 				})();
-				
-				//idle();
-				
-				function idle() {
-					for(var i=0; i<objects.length; i++) {
-						var o = objects[i];
-						if (o) {
-							o.idle();
-						}
-					}
-					mapx+=5;
-					mapy+=5;
-					//mapElement.scrollTop(mapy).scrollLeft(mapx);
-					setTimeout(function() {
-						idle();
-					},40);
-				}
 			});
 			
 		</script>
