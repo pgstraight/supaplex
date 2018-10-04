@@ -41,16 +41,29 @@ function Hero() {
 	
 	this.whatToDo = function() {
 		if (this.job == 888) {
-			if (kbMoveLeft()) {
+			if (kbMoveLeft() && !this.isEmpty(1)) {
 				this.jobTo(4);
 			}
-			else if (kbMoveRight()) {
+			else if (kbMoveRight() && !this.isEmpty(3)) {
 				this.jobTo(6);
 			}
+			else this.job = 0;
+		}
+		else if (this.job == 222) {
+			this.handleGravity();
 		}
 		else if (this.job == 0) {
 			//this.view(this.job);
-			if (kbMoveLeft()) {
+			if (gravity && this.isEmpty(2)) {
+				this.job = 222;
+				this.move = 0;
+				this.xx = this.x;
+				this.yy = this.y + 1;
+				this.dx = 0;
+				this.dy = 0;
+				map.set(this.xx, this.yy, this);
+			}
+			else if (kbMoveLeft()) {
 				this.jobTo(4);
 			}
 			else if (kbMoveRight()) {
@@ -236,13 +249,27 @@ function Hero() {
 		this.currentClass = c;
 	}
 	
+	this.handleGravity = function(direction) {
+		this.move++;
+		this.dy = this.move * 5;
+		if (this.move >= 8) {
+			this.job = 888;
+			this.dx = 0;
+			this.dy = 0;
+			this.move = 0;
+			this.newCoord();
+			map.setForce(this.x, this.y, this);
+		}
+		this.posElement();
+	}
+	
 	this.handleMove = function(direction) {
 		//this.view(this.x+':'+this.xx);
 		var d = this.dd(direction);
 		this.move ++;
-		this.domClass('hero-move'+direction+this.move)
-		this.dx = this.move*d.x*5;
-		this.dy = this.move*d.y*5;
+		this.domClass('hero-move' + direction + this.move)
+		this.dx = this.move * d.x * 5;
+		this.dy = this.move * d.y * 5;
 		if (this.move >= 8) {
 			if (this.job == 8 && gravity) {
 				this.job = 888;
