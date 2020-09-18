@@ -1,0 +1,75 @@
+.c-object {
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	background-color: #eee;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
+	overflow: hidden;
+
+	span {
+		display: block;
+		position: absolute;
+		width: 40px;
+		top: 10px;
+		left: 0;
+		color: #ccc;
+		text-align: center;
+	}
+	
+	em {
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: #555;
+		font-size: 10px;
+	}
+}
+
+.c--eat-0 {
+	display: none;
+}
+
+.c--eat-1 {
+	transform: scale(0.8);
+}
+
+.c--eat-2 {
+	transform: scale(0.6);
+}
+
+.c--eat-3 {
+	transform: scale(0.4);
+}
+
+.c--eat-4 {
+	transform: scale(0.2);
+}
+
+.c-explode-1 {
+	background-image: url(expl1.png);
+}
+
+.c-explode-2 {
+	background-image: url(expl2.png);
+}
+
+.c-explode-3 {
+	background-image: url(expl3.png);
+}
+
+.c-explode-4 {
+	background-image: url(expl4.png);
+}
+
+.c-explode-5 {
+	background-image: url(expl5.png);
+}
+
+.c-explode-6 {
+	background-image: url(expl6.png);
+}

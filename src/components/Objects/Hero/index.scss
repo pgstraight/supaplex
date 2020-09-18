@@ -1,0 +1,48 @@
+.c-object-hero {
+	background-color: #000;
+	border-radius: 20px;
+	
+	&--default {
+		background-image: url(default.png);
+	}
+	
+	&--bomb1 {
+		background-image: url(bomb1.png);
+	}
+	
+	&--bomb2 {
+		background-image: url(bomb2.png);
+	}
+	
+	&--bomb3 {
+		background-image: url(bomb3.png);
+	}
+	
+	&--nippel1 {
+		transform: scale(0.8);
+	}
+	
+	&--nippel2 {
+		transform: scale(0.6);
+	}
+	
+	&--nippel3 {
+		transform: scale(0.4);
+	}
+	
+	&--nippel4 {
+		transform: scale(0.2);
+	}
+	
+	&--nippel5 {
+		transform: scale(0.4);
+	}
+	
+	&--nippel6 {
+		transform: scale(0.6);
+	}
+	
+	&--nippel7 {
+		transform: scale(0.7);
+	}
+}

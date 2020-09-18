@@ -1,0 +1,19 @@
+.c-object-bug {
+	background-color: #000;
+	
+	&--default {
+		background-image: url(default.png);
+	}
+	
+	&--bug1 {
+		background-image: url(bug1.png);
+	}
+	
+	&--bug2 {
+		background-image: url(bug2.png);
+	}
+	
+	&--bug3 {
+		background-image: url(bug3.png);
+	}
+}
