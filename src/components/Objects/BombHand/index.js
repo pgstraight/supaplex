@@ -17,11 +17,6 @@ class ObjectBombHand extends BaseObject
 		return 'c-object-bomb-hand';
 	}
 	
-	blockContent()
-	{
-		return 'hand';
-	}
-	
 	explodable()
 	{
 		return true;
@@ -53,7 +48,6 @@ class ObjectBombHand extends BaseObject
 			return;
 		}
 		this.readyCount++;
-		console.log(this.readyCount);
 		this.posElement();
 		if (this.readyCount > 50) {
 			this.explode(this.x, this.y);

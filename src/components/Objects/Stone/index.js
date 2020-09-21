@@ -15,11 +15,6 @@ class ObjectStone extends BaseObject
 		return true;
 	}
 	
-	blockContent()
-	{
-		return '-';
-	}
-	
 	modifyElement()
 	{
 		let deg = 11.25 * this.rotatePos;

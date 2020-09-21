@@ -173,7 +173,7 @@ class SupaplexStore
 		if (typeof(o) != 'object') {
 			return false;
 		}
-		console.log('nip', n, o.isNippel(), o.canNippel(dx, dy));
+		//console.log('nip', n, o.isNippel(), o.canNippel(dx, dy));
 		return o.isNippel() && o.canNippel(dx, dy);
 	}
 	

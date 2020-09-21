@@ -16,7 +16,7 @@ class ObjectHero extends BaseObject
 	
 	mainClass()
 	{
-		return 'c-object-hero';
+		return 'c-object-hero c-object-hero--default';
 	}
 	
 	blockContent()
@@ -47,6 +47,7 @@ class ObjectHero extends BaseObject
 				if (this.spaceTime > 50) {
 					this.setStatus('default');
 					Supaplex.level.spawnBomb(this.x, this.y);
+					Supaplex.handBombs--;
 				}
 			} else {
 				this.spaceTime = 0;
@@ -129,16 +130,16 @@ class ObjectHero extends BaseObject
 		else {
 			let o = this.near(direction);
 			if (o && o.eatable()) {
-				if (o.job > 0) {
-					this.explode(this.x, this.y);
-				} else {
+				//if (o.job > 0) {
+				//	this.explode(this.x, this.y);
+				//} else {
 					this.setStatus('eat-to-' + direction);
 					this.job = 5;
 					this.move = 0;
 					o.beforeEat();
 					o.job = 50 + direction;
 					o.move = 0;
-				}
+				//}
 			}
 		}
 	}
@@ -192,7 +193,7 @@ class ObjectHero extends BaseObject
 		//this.view(this.x+':'+this.xx);
 		let d = this.dd(direction);
 		this.move ++;
-		this.setStatus('hero-move' + direction + this.move)
+		this.setStatus('move' + direction + Math.ceil(this.move / 2))
 		this.dx = this.move * d.x * 5;
 		this.dy = this.move * d.y * 5;
 		if (this.move >= 8) {
@@ -213,6 +214,7 @@ class ObjectHero extends BaseObject
 	
 	handleRoll(direction) {
 		let d = this.dd(direction);
+		//this.setStatus('roll-to-' + direction)
 		this.move ++;
 		this.dx = this.move * d.x * 5;
 		this.dy = this.move * d.y * 5;
@@ -222,6 +224,7 @@ class ObjectHero extends BaseObject
 			this.dy = 0;
 			this.move = 0;
 			this.newCoord();
+			//this.setStatus('default')
 		}
 		this.posElement();
 	}

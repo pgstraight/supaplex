@@ -7,7 +7,7 @@ class ObjectHard extends BaseObject
 {
 	mainClass()
 	{
-		return 'c-object-hard';
+		return 'c-object-hard c-object-hard--' + this.id;
 	}
 	
 	blockContent()

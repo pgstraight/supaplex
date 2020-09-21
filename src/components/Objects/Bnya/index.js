@@ -10,14 +10,19 @@ class ObjectBnya extends BaseObject
 		return 'c-object-bnya';
 	}
 	
-	blockContent()
-	{
-		return '%';
-	}
-	
 	explodable()
 	{
 		return true;
+	}
+	
+	modifyElement()
+	{
+		let opos = this.pos - 1;
+		if (opos == 0) {
+			opos = 5;
+		}
+		this.element.removeClass('c-object-bnya--' + opos);
+		this.element.addClass('c-object-bnya--' + this.pos);
 	}
 	
 	idle()
@@ -26,7 +31,7 @@ class ObjectBnya extends BaseObject
 			this.idleExplode();
 		} else {
 			this.pos++;
-			if (this.pos>5) {
+			if (this.pos > 5) {
 				this.pos = 1;
 			}
 			this.idleAutoMovement();

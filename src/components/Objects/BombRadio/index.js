@@ -10,11 +10,6 @@ class ObjectBombRadio extends BaseObject
 		return 'c-object-bomb-radio';
 	}
 	
-	blockContent()
-	{
-		return 'rad';
-	}
-	
 	radioExplode() {
 		this.explode(this.x, this.y);
 	}

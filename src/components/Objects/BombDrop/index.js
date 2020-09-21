@@ -9,11 +9,6 @@ class ObjectBombDrop extends BaseObject
 		return 'c-object-bomb-drop';
 	}
 	
-	blockContent()
-	{
-		return 'drop';
-	}
-	
 	idle()
 	{
 		this.idleExplode();

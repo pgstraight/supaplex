@@ -10,11 +10,6 @@ class ObjectBombPult extends BaseObject
 		return 'c-object-bomb-pult';
 	}
 	
-	blockContent()
-	{
-		return 'pult';
-	}
-	
 	press() {
 		for(var y = 23; y >= 0; y--) {
 			for(var x = 0; x < 60; x++) {

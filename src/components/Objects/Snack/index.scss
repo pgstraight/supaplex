@@ -1,4 +1,20 @@
 .c-object-snack {
-	background-color: #eee;
-	border-color: #eee;
+	&--1 {
+		background-image: url(snack1.png);
+	}
+	&--2 {
+		background-image: url(snack2.png);
+	}
+	&--3 {
+		background-image: url(snack3.png);
+	}
+	&--4 {
+		background-image: url(snack3.png);
+	}
+	&--5 {
+		background-image: url(snack2.png);
+	}
+	&--6 {
+		background-image: url(snack1.png);
+	}
 }

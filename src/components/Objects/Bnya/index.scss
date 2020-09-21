@@ -1,4 +1,17 @@
 .c-object-bnya {
-	background-color: #eee;
-	border-color: #eee;
+	&--1 {
+		background-image: url(b1.png);
+	}
+	&--2 {
+		background-image: url(b2.png);
+	}
+	&--3 {
+		background-image: url(b3.png);
+	}
+	&--4 {
+		background-image: url(b4.png);
+	}
+	&--5 {
+		background-image: url(b5.png);
+	}
 }

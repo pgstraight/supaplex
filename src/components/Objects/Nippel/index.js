@@ -15,7 +15,7 @@ class ObjectNippel extends BaseObject
 {
 	mainClass()
 	{
-		return 'c-object-nippel';
+		return 'c-object-nippel c-object-nippel--' + this.id;
 	}
 	
 	isNippel() {

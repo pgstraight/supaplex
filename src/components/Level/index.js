@@ -117,6 +117,7 @@ class Level
 	spawnBomb(x, y)
 	{
 		Supaplex.handBomb = this.createObject(20, x, y);
+		Supaplex.set(x, y, Supaplex.handBomb);
 		Supaplex.handBomb.isReady = true;
 		Supaplex.board.element.append(Supaplex.handBomb.createElement());
 	}

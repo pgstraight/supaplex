@@ -1,5 +1,23 @@
 .c-object-chip {
-	border-radius: 10px;
-	background-color: #ddd;
-	border-color: #ddd;
+	background-color: #000;
+	
+	&--5 {
+		background-image: url(chip5.png);
+	}
+	
+	&--26 {
+		background-image: url(chip26.png);
+	}
+	
+	&--27 {
+		background-image: url(chip27.png);
+	}
+	
+	&--38 {
+		background-image: url(chip38.png);
+	}
+	
+	&--39 {
+		background-image: url(chip39.png);
+	}
 }

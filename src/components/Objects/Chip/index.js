@@ -7,12 +7,7 @@ class ObjectChip extends BaseObject
 {
 	mainClass()
 	{
-		return 'c-object-chip';
-	}
-	
-	blockContent()
-	{
-		return '';
+		return 'c-object-chip c-object-chip--' + this.id;
 	}
 	
 	isSpheric()

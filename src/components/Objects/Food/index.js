@@ -10,11 +10,6 @@ class ObjectFood extends BaseObject
 		return 'c-object-food';
 	}
 	
-	blockContent()
-	{
-		return '$';
-	}
-	
 	isSpheric()
 	{
 		return true;

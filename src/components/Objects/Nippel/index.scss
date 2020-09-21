@@ -1,5 +1,23 @@
 .c-object-nippel {
-	background-color: #ddd;
-	border-color: #ddd;
-	border-radius: 10px;
+	&--9 {
+		background-image: url(n09.png);
+	}
+	&--10 {
+		background-image: url(n10.png);
+	}
+	&--11 {
+		background-image: url(n11.png);
+	}
+	&--12 {
+		background-image: url(n12.png);
+	}
+	&--21 {
+		background-image: url(n21.png);
+	}
+	&--22 {
+		background-image: url(n22.png);
+	}
+	&--23 {
+		background-image: url(n23.png);
+	}
 }

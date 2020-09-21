@@ -17,11 +17,6 @@ class ObjectSnack extends BaseObject
 		return 'c-object-snack';
 	}
 	
-	blockContent()
-	{
-		return 'A';
-	}
-	
 	explodable()
 	{
 		return true;
@@ -35,6 +30,10 @@ class ObjectSnack extends BaseObject
 	modifyElement()
 	{
 		this.element.css('transform', 'rotate(' + this.angle + 'grad)');
+		let opos = this.pos - 1;
+		if (opos == 0) opos = 6;
+		this.element.removeClass('c-object-snack--' + opos);
+		this.element.addClass('c-object-snack--' + this.pos);
 	}
 	
 	idle() {
