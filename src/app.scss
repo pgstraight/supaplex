@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #206060;
+	background-image: url(img/bg.jpg);
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.body-bg1 {
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 60%;
+	bottom: 0;
+	background-color: #206060;
+}
+
+.body-bg2 {
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 40%;
+	right: 0;
+	bottom: 0;
+	background-color: #206060;
+	//background: linear-gradient(to right, #206060, rgba(0,0,0,0));
+}
+
+#app-root-container {
+	position: relative;
+	z-index: 1000;
+}
+
+
+.with-level {
+	position: absolute;
+	width: 800px;
+	height: 600px;
+}
