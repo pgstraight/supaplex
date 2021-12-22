@@ -28,6 +28,11 @@ class Statusbar {
 	setBombs(n)
 	{
 		this.bombCount.empty().append(n);
+		if (n == 0) {
+			$('.c-bomb-count').hide();
+		} else {
+			$('.c-bomb-count').show();
+		}
 	}
 }
 

@@ -1,0 +1,36 @@
+.c-level-select {
+	margin: 0;
+
+	h1 {
+		text-align: center;
+		margin: 50px 0;
+		padding: 0;
+		font-family: monospace;
+		font-size: 50px;
+		color: #fff;
+		text-shadow: 5px 5px 5px rgba(0,0,0,0.7);
+	}
+
+	a {
+		display: block;
+		padding: 5px 0;
+		text-align: center;
+		font-family: monospace;
+		font-size: 30px;
+		text-decoration: none;
+		color: #777;
+		text-shadow: 3px 3px 5px rgba(0,0,0,0.7);
+
+		&:hover {
+			background-color: rgba(0,0,0,0.3);
+		}
+
+		&.active-level {
+			color: #ff8;
+		}
+
+		&.past-level {
+			color: #0a0;
+		}
+	}
+}

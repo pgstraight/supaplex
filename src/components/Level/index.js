@@ -1,5 +1,3 @@
-//import Statusbar from '../Statusbar';
-//import Board from '../Board';
 import $ from "jquery";
 import Supaplex from '../../supaplex.js';
 import Statusbar from '../Statusbar';
@@ -37,8 +35,10 @@ class Level
 		Supaplex.statusbar = new Statusbar();
 		this.element.append(Supaplex.statusbar.element);
 		
-		Supaplex.board = new Board();//console.log(Supaplex.board.element);
+		Supaplex.board = new Board();
 		this.element.append(Supaplex.board.element);
+
+		this.messHooray = $('<div>').addClass('message').addClass('message-hooray').text('Yippee!').appendTo(this.element);
 	}
 	
 	createObject(id, x, y)

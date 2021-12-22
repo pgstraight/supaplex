@@ -1,5 +1,57 @@
 .c-statusbar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 40px;
 	box-sizing: border-box;
-	width: 800px;
-	border: 1px solid #ccc;
+	width: 100%;
+	background-color: #888;
+	border-top: 2px solid #aaa;
+	border-left: 2px solid #aaa;
+	border-right: 2px solid #666;
+	border-bottom: 2px solid #666;
+}
+
+@mixin moni() {
+	position: absolute;
+	bottom: 3px;
+	padding: 3px 25px 3px 3px;
+	background-color: #000;
+	background-repeat: no-repeat;
+	background-position: right 3px center;
+	background-size: 13px 13px;
+	color: #ff8;
+	text-align: right;
+	font-size: 16px;
+	font-family: monospace;
+	border-top: 2px solid #666;
+	border-left: 2px solid #666;
+	border-right: 2px solid #aaa;
+	border-bottom: 2px solid #aaa;
+}
+
+.c-food-count {
+	right: 5px;
+	width: 50px;
+	background-image: url(food.png);
+
+	@include moni();
+}
+
+
+.c-bomb-count {
+	right: 92px;
+	width: 50px;
+	background-image: url(bomb.png);
+
+	@include moni();
+}
+
+
+.c-level-title {
+	left: 5px;
+	width: 200px;
+	background-image: url(hero.png);
+
+	@include moni();
 }

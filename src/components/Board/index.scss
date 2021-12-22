@@ -1,8 +1,10 @@
 .c-board {
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 41px;
 	box-sizing: border-box;
-	width: 800px;
-	height: 600px;
 	overflow: hidden;
 	background-color: #000;
 }
