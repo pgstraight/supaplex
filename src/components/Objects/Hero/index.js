@@ -1,3 +1,4 @@
+import $ from "jquery";
 import Supaplex from '../../../supaplex';
 import kb from '../../KB';
 import BaseObject from '../Base';
@@ -66,8 +67,7 @@ class ObjectHero extends BaseObject
 	}
 	
 	idleHero() {
-		//this.view(this.x+':'+this.xx);
-		this.view(this.job);
+		//this.view(this.job);
 		if (this.job == 98 || this.job == 99) {
 			return;
 		}
@@ -88,9 +88,6 @@ class ObjectHero extends BaseObject
 		}
 		
 		this.whatToDo();
-		
-		//this.view(this.job);
-		//displayDebug();
 	}
 	
 	jobTo(direction) {
@@ -99,7 +96,9 @@ class ObjectHero extends BaseObject
 		}
 		else {
 			let o = this.near(direction);
-			if (o && o.eatable()) {
+			if (o && o.painfull()) {
+				this.explode(this.x, this.y);
+			} else if (o && o.eatable()) {
 				if (o.job > 0) {
 					this.explode(this.x, this.y);
 				} else {
@@ -130,16 +129,12 @@ class ObjectHero extends BaseObject
 		else {
 			let o = this.near(direction);
 			if (o && o.eatable()) {
-				//if (o.job > 0) {
-				//	this.explode(this.x, this.y);
-				//} else {
-					this.setStatus('eat-to-' + direction);
-					this.job = 5;
-					this.move = 0;
-					o.beforeEat();
-					o.job = 50 + direction;
-					o.move = 0;
-				//}
+				this.setStatus('eat-to-' + direction);
+				this.job = 5;
+				this.move = 0;
+				o.beforeEat();
+				o.job = 50 + direction;
+				o.move = 0;
 			}
 		}
 	}
@@ -297,6 +292,9 @@ class ObjectHero extends BaseObject
 			else if (kb.eatRight()) {
 				this.eatTo(6);
 			}
+			else if (kb.esc()) {
+				this.waitExplode();
+			}
 		}
 		
 		else if (this.job == 8) {
@@ -380,6 +378,23 @@ class ObjectHero extends BaseObject
 				this.setStatus('default');
 			}
 		}
+	}
+
+	waitExplode() {
+		this.explode(this.x, this.y);
+		this.afterExplode();
+        }
+
+	afterExplode()
+	{
+		this.destroy();
+		$('.message-oops')
+			.css('font-size', '150px')
+			.css('opacity', '1')
+		;
+		setTimeout(function() {
+			location.href = 'index.html';
+		}, 2000);
 	}
 }
 

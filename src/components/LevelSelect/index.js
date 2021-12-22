@@ -7,7 +7,7 @@ class LevelSelect
 {
 	constructor()
 	{
-		let active = 20;
+		let active = 1;
 		let h1 = $('<h1>').text('Select level');
 		let element = $('<div>').addClass('c-level-select').append(h1);
 		let inner = $('<div>').addClass('c-level-select__inner').appendTo(element);
@@ -20,7 +20,9 @@ class LevelSelect
 			if (count < active) {
 				item.addClass('past-level');
 			}
-			inner.append(item);
+			if (count > 0) {
+				inner.append(item);
+			}
 			count++;
 		});
 

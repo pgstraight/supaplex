@@ -39,6 +39,7 @@ class Level
 		this.element.append(Supaplex.board.element);
 
 		this.messHooray = $('<div>').addClass('message').addClass('message-hooray').text('Yippee!').appendTo(this.element);
+		this.messOops = $('<div>').addClass('message').addClass('message-oops').text('Oops!').appendTo(this.element);
 	}
 	
 	createObject(id, x, y)

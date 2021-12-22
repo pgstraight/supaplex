@@ -15,6 +15,11 @@ class ObjectBnya extends BaseObject
 		return true;
 	}
 	
+	painfull()
+	{
+		return true;
+	}
+
 	modifyElement()
 	{
 		let opos = this.pos - 1;

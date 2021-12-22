@@ -13,7 +13,7 @@ class ObjectExit extends BaseObject
 	
 	eatable()
 	{
-		return true;
+		return (Supaplex.counter == 0);
 	}
 	
 	idle()
@@ -23,13 +23,15 @@ class ObjectExit extends BaseObject
 	
 	beforeEat()
 	{
-		$('.message-hooray')
-			.css('font-size', '150px')
-			.css('opacity', '1')
-		;
-		setTimeout(function() {
-			location.href = 'index.html';
-		}, 1500);
+		if (Supaplex.counter == 0) {
+			$('.message-hooray')
+				.css('font-size', '150px')
+				.css('opacity', '1')
+			;
+			setTimeout(function() {
+				location.href = 'index.html';
+			}, 1000);
+		}
 	}
 }
 

@@ -20,6 +20,7 @@ class KB
 				case 39: k.keyRight = true; break;
 				case 38: k.keyUp = true; break;
 				case 40: k.keyDown = true; break;
+				case 27: k.keyEsc = true; break;
 			}
 		});
 		$(window).keyup(function(e) {
@@ -29,8 +30,13 @@ class KB
 				case 39: k.keyRight = false; break;
 				case 38: k.keyUp = false; break;
 				case 40: k.keyDown = false; break;
+				case 27: k.keyEsc = false; break;
 			}
 		});
+	}
+
+	esc() {
+		return this.keyEsc;
 	}
 	
 	space() {

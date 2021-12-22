@@ -136,6 +136,11 @@ class ObjectBase
 		return false;
 	}
 	
+	painfull()
+	{
+		return false;
+	}
+	
 	dd(d)
 	{
 		let dx = 0;

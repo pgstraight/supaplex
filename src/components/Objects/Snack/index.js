@@ -22,6 +22,11 @@ class ObjectSnack extends BaseObject
 		return true;
 	}
 	
+	painfull()
+	{
+		return true;
+	}
+
 	press()
 	{
 		this.explode(this.x, this.y);
