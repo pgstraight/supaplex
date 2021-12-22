@@ -17,8 +17,12 @@ class ObjectFood extends BaseObject
 	
 	modifyElement()
 	{
-		let deg = 22.5 * this.rotatePos;
-		this.element.css('transform', 'rotate(' + deg + 'deg)');
+		if (this.eatPos > 0) {
+			this.element.css('transform', '');
+		} else {
+			let deg = 22.5 * this.rotatePos;
+			this.element.css('transform', 'rotate(' + deg + 'deg)');
+		}
 	}
 	
 	idle()
