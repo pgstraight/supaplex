@@ -7,6 +7,7 @@ class ObjectBase
 {
 	constructor()
 	{
+		this.name = "";
 		this.id = 0;
 		this.x = 0;
 		this.y = 0;
@@ -38,6 +39,7 @@ class ObjectBase
 		this.y = y;
 		this.xx = x;
 		this.yy = y;
+		this.name = id + ':' + x + ':' + y;
 	}
 	
 	createElement()
@@ -113,6 +115,8 @@ class ObjectBase
 	
 	destroy()
 	{
+		//console.log('destroy', this);
+		this.isAlive = false;
 		if (this.element) {
 			this.element.remove();
 		}
@@ -201,6 +205,9 @@ class ObjectBase
 	
 	idleAutoMovement()
 	{
+		if (!this.isAlive) {
+			return;
+		}
 		if (this.move == -1) {
 			this.findDirection();
 			if (this.direction > 0) {
@@ -334,6 +341,9 @@ class ObjectBase
 	
 	idleRoll()
 	{
+		if (!this.isAlive) {
+			return;
+		}
 		if (this.job == 44 || this.job == 46 || this.job == 48 || this.job == 42) {
 			let direction = this.job - 40;
 			let d = this.dd(direction);
@@ -363,6 +373,9 @@ class ObjectBase
 	
 	idleFall()
 	{
+		if (!this.isAlive) {
+			return;
+		}
 		let o;
 		if (this.job == 0) {
 			if (this.isEmpty(2)) {

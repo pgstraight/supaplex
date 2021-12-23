@@ -11,6 +11,7 @@ class ObjectBombDrop extends BaseObject
 	
 	idle()
 	{
+		//this.view(1);
 		this.idleExplode();
 		if (this.job < 98) {
 			this.idleFall();
