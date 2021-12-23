@@ -24,6 +24,7 @@ class ObjectExit extends BaseObject
 	beforeEat()
 	{
 		if (Supaplex.counter == 0) {
+			Supaplex.setStoredLevel(Supaplex.levelId);
 			$('.message-hooray')
 				.css('font-size', '150px')
 				.css('opacity', '1')

@@ -1,5 +1,6 @@
 import $ from "jquery";
 import levels from '../../levels.js';
+import Supaplex from '../../supaplex';
 
 import './index.scss';
 
@@ -7,7 +8,8 @@ class LevelSelect
 {
 	constructor()
 	{
-		let active = 1;
+		
+		let active = Supaplex.getStoredLevel() * 1 + 1;
 		let h1 = $('<h1>').text('Select level');
 		let element = $('<div>').addClass('c-level-select').append(h1);
 		let inner = $('<div>').addClass('c-level-select__inner').appendTo(element);
@@ -26,7 +28,7 @@ class LevelSelect
 			count++;
 		});
 
-		element.appendTo('#app-root-container');
+		element.appendTo(Supaplex.appContainer);
 
 		let p = $('.active-level').offset().top;
 		$('html, body').animate({

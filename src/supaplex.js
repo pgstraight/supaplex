@@ -22,7 +22,24 @@ class SupaplexStore
 		this.handBombs = 0;
 		this.handBomb = false;
 	}
+
+	getStoredLevel()
+	{
+		let n = localStorage.getItem('storedLevel');
+		if (n === undefined || n == null) {
+			n = 0;
+		}
+		return n;
+	}
 	
+	setStoredLevel(n)
+	{
+		let stored = this.getStoredLevel();
+		if (n > stored) {
+			localStorage.setItem('storedLevel', n);
+		}
+	}
+
 	initLevel(id)
 	{
 		this.levelId = id;

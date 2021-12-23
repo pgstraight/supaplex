@@ -42,7 +42,6 @@ class ObjectSnack extends BaseObject
 	}
 	
 	idle() {
-		//this.view(this.job);
 		if (this.job == 98 || this.job == 99) {
 			this.idleExplode();
 		} else {

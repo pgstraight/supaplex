@@ -62,7 +62,6 @@ class ObjectBase
 	
 	blockContent()
 	{
-		//return this.id;
 		return '';
 	}
 	
@@ -335,7 +334,6 @@ class ObjectBase
 	
 	idleRoll()
 	{
-		//this.view(this.job);
 		if (this.job == 44 || this.job == 46 || this.job == 48 || this.job == 42) {
 			let direction = this.job - 40;
 			let d = this.dd(direction);
@@ -560,7 +558,6 @@ class ObjectBase
 	
 	explode(ex, ey)
 	{
-		//this.view(this.y);
 		this.job = 99;
 		this.move = 0;
 		this.dx = 0;
@@ -579,7 +576,6 @@ class ObjectBase
 				if (x != 0 || y != 0) {
 					let o = Supaplex.get(this.x + x, this.y + y);
 					if (o && !o.solid()) {
-						//this.view(o.solid());
 						if (o.explodable()) {
 							o.waitExplode();
 						} else {
@@ -619,10 +615,7 @@ class ObjectBase
 	
 	idleEat()
 	{
-		//this.view(this.job + ':' + this.eatPos);
 		if (this.job == 52 || this.job == 58 || this.job == 54 || this.job == 56) {
-			//console.log(this.job + ':' + this.eatPos);
-			//console.log(this.move);
 			if (this.move < 4) {
 				this.move++;
 				this.eatPos = this.move;

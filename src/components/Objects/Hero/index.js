@@ -67,7 +67,6 @@ class ObjectHero extends BaseObject
 	}
 	
 	idleHero() {
-		//this.view(this.job);
 		if (this.job == 98 || this.job == 99) {
 			return;
 		}
@@ -185,7 +184,6 @@ class ObjectHero extends BaseObject
 	}
 	
 	handleMove(direction) {
-		//this.view(this.x+':'+this.xx);
 		let d = this.dd(direction);
 		this.move ++;
 		this.setStatus('move' + direction + Math.ceil(this.move / 2))
@@ -209,7 +207,6 @@ class ObjectHero extends BaseObject
 	
 	handleRoll(direction) {
 		let d = this.dd(direction);
-		//this.setStatus('roll-to-' + direction)
 		this.move ++;
 		this.dx = this.move * d.x * 5;
 		this.dy = this.move * d.y * 5;
@@ -219,7 +216,6 @@ class ObjectHero extends BaseObject
 			this.dy = 0;
 			this.move = 0;
 			this.newCoord();
-			//this.setStatus('default')
 		}
 		this.posElement();
 	}
@@ -243,7 +239,6 @@ class ObjectHero extends BaseObject
 	}
 	
 	whatToDo() {
-		//this.view(this.job);
 		if (this.job == 888) {
 			if (kb.moveLeft() && !this.isEmpty(1)) {
 				this.jobTo(4);
