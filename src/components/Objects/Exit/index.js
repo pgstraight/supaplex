@@ -25,6 +25,7 @@ class ObjectExit extends BaseObject
 	{
 		if (Supaplex.counter == 0) {
 			Supaplex.setStoredLevel(Supaplex.levelId);
+			Supaplex.success = true;
 			$('.message-hooray')
 				.css('font-size', '150px')
 				.css('opacity', '1')

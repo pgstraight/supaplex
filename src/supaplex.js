@@ -21,6 +21,7 @@ class SupaplexStore
 		
 		this.handBombs = 0;
 		this.handBomb = false;
+		this.success = false;
 	}
 
 	getStoredLevel()
@@ -29,13 +30,13 @@ class SupaplexStore
 		if (n === undefined || n == null) {
 			n = 0;
 		}
-		return n;
+		return n * 1;
 	}
 	
 	setStoredLevel(n)
 	{
 		let stored = this.getStoredLevel();
-		if (n > stored) {
+		if (n*1 > stored) {
 			localStorage.setItem('storedLevel', n);
 		}
 	}

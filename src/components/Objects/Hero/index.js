@@ -27,7 +27,7 @@ class ObjectHero extends BaseObject
 	
 	explodable()
 	{
-		return true;
+		return !Supaplex.success;
 	}
 	
 	idle()
@@ -376,12 +376,18 @@ class ObjectHero extends BaseObject
 	}
 
 	waitExplode() {
+		if (Supaplex.success) {
+			return;
+		}
 		this.explode(this.x, this.y);
 		this.afterExplode();
         }
 
 	afterExplode()
 	{
+		if (Supaplex.success) {
+			return;
+		}
 		this.destroy();
 		$('.message-oops')
 			.css('font-size', '150px')
